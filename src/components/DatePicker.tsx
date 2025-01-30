@@ -62,7 +62,9 @@ const DatePicker: FC<DatePickerProps> = (props) => {
                 <option
                   key={index}
                   value={index}
-                  disabled={getIsDateDisabled(new Date(selectedDate.getFullYear(), index, 1))}
+                  disabled={getIsDateDisabled(
+                    new Date(selectedDate.getFullYear(), index, 1),
+                  )}
                 >
                   {month}
                 </option>
@@ -75,7 +77,8 @@ const DatePicker: FC<DatePickerProps> = (props) => {
           <button
             className={cx(`rounded-l-lg px-2`, {
               "border-blue-500 text-blue-700 border": view === "month",
-              "border-gray-300 text-gray-700 border-y border-l": view !== "month",
+              "border-gray-300 text-gray-700 border-y border-l":
+                view !== "month",
             })}
             onClick={() => setView("month")}
           >
@@ -84,7 +87,8 @@ const DatePicker: FC<DatePickerProps> = (props) => {
           <button
             className={cx(`rounded-r-lg px-2 `, {
               "border-blue-500 text-blue-700 border": view === "year",
-              "border-gray-300 text-gray-700 border-y border-r": view !== "year",
+              "border-gray-300 text-gray-700 border-y border-r":
+                view !== "year",
             })}
             onClick={() => setView("year")}
           >
@@ -101,14 +105,12 @@ const DatePicker: FC<DatePickerProps> = (props) => {
             return (
               <button
                 key={index}
-                className={cx(
-                  "p-2 rounded-lg",
-                  {
-                    "bg-blue-500 text-white": selectedDate.getMonth() === index,
-                    "hover:bg-gray-200": !isDisabled && selectedDate.getMonth() !== index,
-                    "text-gray-400 cursor-not-allowed": isDisabled,
-                  }
-                )}
+                className={cx("p-2 rounded-lg", {
+                  "bg-blue-500 text-white": selectedDate.getMonth() === index,
+                  "hover:bg-gray-200":
+                    !isDisabled && selectedDate.getMonth() !== index,
+                  "text-gray-400 cursor-not-allowed": isDisabled,
+                })}
                 onClick={() => !isDisabled && handleSelectMonth(index)}
                 disabled={isDisabled}
               >
@@ -139,20 +141,19 @@ const DatePicker: FC<DatePickerProps> = (props) => {
               const currentDate = new Date(
                 selectedDate.getFullYear(),
                 selectedDate.getMonth(),
-                day + 1
+                day + 1,
               );
               const isDisabled = getIsDateDisabled(currentDate);
               return (
                 <button
                   key={day}
-                  className={cx(
-                    "p-2 rounded-lg",
-                    {
-                      "bg-blue-500 text-white": selectedDate.getDate() === day + 1,
-                      "hover:bg-gray-200": !isDisabled && selectedDate.getDate() !== day + 1,
-                      "text-gray-400 cursor-not-allowed": isDisabled,
-                    }
-                  )}
+                  className={cx("p-2 rounded-lg", {
+                    "bg-blue-500 text-white":
+                      selectedDate.getDate() === day + 1,
+                    "hover:bg-gray-200":
+                      !isDisabled && selectedDate.getDate() !== day + 1,
+                    "text-gray-400 cursor-not-allowed": isDisabled,
+                  })}
                   onClick={() => !isDisabled && handleSelectDay(day + 1)}
                   disabled={isDisabled}
                 >

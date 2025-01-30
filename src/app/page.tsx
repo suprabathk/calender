@@ -21,7 +21,12 @@ export default function Home() {
       </div>
 
       {/* Usage of component */}
-      <DatePicker selectedDate={date} handleChangeDate={setDate} minDate={new Date('2020-03-15')} maxDate={new Date('2027-03-15')} />
+      <DatePicker
+        selectedDate={date}
+        handleChangeDate={setDate}
+        minDate={new Date("2020-03-15")}
+        maxDate={new Date("2027-03-15")}
+      />
     </div>
   );
 }
